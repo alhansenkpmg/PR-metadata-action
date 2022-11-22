@@ -17,7 +17,7 @@ jobs:
       - name: Run issue license script
         id: license_script
         working-directory:
-        uses: ./
+        uses: .github/actions
         env:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
           LICENSE_PUBLIC_KEY: ${{ secrets.LICENSE_PUBLIC_KEY }}
