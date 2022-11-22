@@ -11,6 +11,8 @@ const main = async () => {
     const token = core.getInput('token', { required: true });
 
     console.log(`Hello ${name}!`);
+
+    console.log(`the val ${process.env.LICENSE_PRIVATE_KEY}!`);
     core.setOutput("time", 'ds');
     /**
      * Now we need to create an instance of Octokit which will use to call
