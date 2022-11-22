@@ -15,8 +15,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - run: mkdir -p license
-      - name: Run JS
+      - name: Run_JS
         uses: ./
         env:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
@@ -24,14 +23,20 @@ jobs:
           name: ${{ github.event.inputs.name }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
-      - name: var check
-        run: echo "Hello ${{ github.event.inputs.name }}"
+        run: echo "The time was ${{ steps.Run_JS.outputs.time }}"
+      - name: Get the olicense key
+        run: echo "The time was ${{ steps.Run_JS.outputs.licensekey }}"
+      - name: echo file
+        run: echo ${{ steps.Run_JS.outputs.licensekey }} > license.lic
+
+      - name: Upload license
+        uses: actions/upload-artifact@v3
+        with:
+          name: licenseup
+          path: license.lic
+
       - uses: actions/download-artifact@v3
         id: download
         with:
-          name: 'my-artifact'
-          path: .license/license.lic
-
-      - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
+          name: 'download'
+          path: license.lic
