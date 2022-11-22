@@ -20,7 +20,9 @@ const main = async () => {
         ${process.env.LICENSE_PRIVATE_KEY}
       `
     });
+
     /**
+     * 
      * Now we need to create an instance of Octokit which will use to call
      * GitHub's REST API endpoints.
      * We will pass the token as an argument to the constructor. This token
