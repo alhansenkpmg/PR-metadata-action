@@ -7,6 +7,10 @@ inputs:
   token:
     description: 'The token to use to access the GitHub API'
     required: true
+  working-dir:
+    required: false
+    default: '.'
+    description: The directory where dist folder resides
 outputs:
   time: # id of output
     description: 'time'
@@ -14,6 +18,5 @@ outputs:
     description: 'licensekey'
 
 runs:
-  working-directory: ./app
   using: 'node16'
   main: './dist/index.js'
