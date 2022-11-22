@@ -38,5 +38,7 @@ jobs:
       - uses: actions/download-artifact@v3
         id: download
         with:
-          name: 'download'
+          name: 'licenseup'
           path: license.lic
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
