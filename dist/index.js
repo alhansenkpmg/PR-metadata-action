@@ -9712,8 +9712,7 @@ const main = async () => {
     const octokit = new github.getOctokit(token);
     const signature="123";
     const licenseData = `${signature.toString('base64')}`
-    await fs.writeFileSync("./license.lic", licenseData);
-    core.setOutput("licensekey", "hello");
+    core.setOutput("licensekey", licenseData);
 
 
     core.info('Output to the actions build log')
