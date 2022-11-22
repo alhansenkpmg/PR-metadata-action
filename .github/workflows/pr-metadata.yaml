@@ -20,13 +20,12 @@ jobs:
         uses: ./
         env:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
+          LICENSE_PUBLIC_KEY: ${{ secrets.LICENSE_PUBLIC_KEY }}
         with:
           name: ${{ github.event.inputs.name }}
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Get the output time
         run: echo "The time was ${{ steps.license_script.outputs.time }}"
-      - name: Get the olicense key
-        run: echo "The time was ${{ steps.license_script.outputs.licensekey }}"
       - name: echo file
         run: echo ${{ steps.license_script.outputs.licensekey }} > license.lic
 
