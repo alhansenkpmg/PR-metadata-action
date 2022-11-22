@@ -16,7 +16,7 @@ jobs:
       - name: Annotate PR
         env:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
-        uses: link-/PR-metadata-action@main
+        uses: actions/checkout@v3
         with:
           name: ${{ github.event.inputs.name }}
           token: ${{ secrets.GITHUB_TOKEN }}
