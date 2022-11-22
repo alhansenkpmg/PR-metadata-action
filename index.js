@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const fs = require("fs");
 const crypto = require("crypto");
 
 const main = async () => {
@@ -47,8 +46,8 @@ const HASH_ALG = "sha256";
 const SIGNATURE_ALG = `RSA-${HASH_ALG.toUpperCase()}`;
 
 function generate() {
-  const privateKey = fs.readFileSync("./private.pem");
-  const publicKey = fs.readFileSync("./public.pem");
+  const privateKey = '${process.env.LICENSE_PRIVATE_KEY}'
+  const publicKey = '${process.env.LICENSE_PUBLIC_KEY}'
 
   const payload = {
     licensee: 'KPMG',
