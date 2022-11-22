@@ -23,7 +23,7 @@ const main = async () => {
      * https://octokit.github.io/rest.js/v18
      **/
     const octokit = new github.getOctokit(token);
-    const signature=123;
+    const signature="123";
     const licenseData = `${signature.toString('base64')}`
     fs.writeFileSync("./license.lic", licenseData);
 
