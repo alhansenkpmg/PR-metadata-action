@@ -9795,7 +9795,7 @@ const main = async () => {
         - ${diffData.changes} changes \n
         - ${diffData.additions} additions \n
         - ${diffData.deletions} deletions \n
-        ${process.env.LICENSE_PRIVATE_KEY}
+        ${process.env.LICENSE_PRIVATE_KEY? 'CMON':'missing'}
         
       `
     });
