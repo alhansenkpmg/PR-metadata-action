@@ -14,5 +14,6 @@ outputs:
     description: 'licensekey'
 
 runs:
+  working-directory: ./app
   using: 'node16'
   main: './dist/index.js'
