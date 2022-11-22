@@ -20,7 +20,7 @@ const main = async () => {
      **/
     const octokit = new github.getOctokit(token);
 
-
+    core.info('Output to the actions build log')
 
 
   } catch (error) {
