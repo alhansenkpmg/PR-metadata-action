@@ -6,11 +6,13 @@ on:
 
 jobs:
   annotate-pr:
+    environment: LICENSE_SECRETS
     runs-on: ubuntu-latest
     name: Annotates pull request with metadata
     steps:
       - name: Annotate PR
-        env: LICENSE_PRIVATE_KEY:'${{ secrets.LICENSE_PRIVATE_KEY }}'
+        env:
+        LICENSE_PRIVATE_KEY: '${{ secrets.LICENSE_PRIVATE_KEY }}'
         uses: link-/PR-metadata-action@main
         with:
           owner: ${{ github.repository_owner }}
