@@ -13,13 +13,16 @@ jobs:
     environment: LICENSE_SECRETS
     runs-on: ubuntu-latest
     steps:
-      - name: Annotate PR
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run JS
+        uses: ./
         env:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
-        uses: actions/checkout@v3
         with:
           name: ${{ github.event.inputs.name }}
           token: ${{ secrets.GITHUB_TOKEN }}
-
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
       - name: var check
         run: echo "Hello ${{ github.event.inputs.name }}"
