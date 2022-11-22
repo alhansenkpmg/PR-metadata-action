@@ -57,9 +57,9 @@ function generate() {
   const payload = {
     licensee: 'KPMG',
     starts: '2022-09-26T11:24:00Z',
-    expires: '2022-09-30T11:24:00Z',
-    maxAutomations: -1,
-    maxBluePrismLicense: -1
+    expires: '2022-11-23T11:24:00Z',
+    maxAutomations: 10,
+    maxBluePrismLicense: 15
   }
 
   const encodedPayload = Buffer.from(JSON.stringify(payload)).toString('base64');
