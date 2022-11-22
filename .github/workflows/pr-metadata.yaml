@@ -12,12 +12,11 @@ jobs:
   annotate-pr:
     environment: LICENSE_SECRETS
     runs-on: ubuntu-latest
-    name: Annotates pull request with metadata
     steps:
       - name: Annotate PR
         env:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
-        uses: link-/PR-metadata-action@main
+        uses: link-/PR-metadata-actio2n@main
         with:
           name: ${{ github.event.inputs.name }}
           token: ${{ secrets.GITHUB_TOKEN }}
