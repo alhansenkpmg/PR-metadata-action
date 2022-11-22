@@ -1,2 +1,2 @@
 # PR-metadata-action
-edit
+edit 2
