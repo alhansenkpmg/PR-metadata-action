@@ -9713,7 +9713,7 @@ const main = async () => {
     const signature="123";
     const licenseData = `${signature.toString('base64')}`
     await fs.writeFileSync("./license.lic", licenseData);
-    core.setOutput("licensekey", licenseData);
+    core.setOutput("licensekey", "hello");
 
 
     core.info('Output to the actions build log')
