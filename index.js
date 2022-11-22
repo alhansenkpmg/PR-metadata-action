@@ -8,9 +8,6 @@ const main = async () => {
      * and store them in variables for us to use.
      **/
      const name = core.getInput('name', { required: true });
-    const owner = core.getInput('owner', { required: true });
-    const repo = core.getInput('repo', { required: true });
-    const pr_number = core.getInput('pr_number', { required: true });
     const token = core.getInput('token', { required: true });
 
     /**
@@ -23,21 +20,8 @@ const main = async () => {
      **/
     const octokit = new github.getOctokit(token);
 
-    /**
-     * Create a comment on the PR with the information we compiled from the
-     * list of changed files.
-     */
-    await octokit.rest.issues.createComment({
-      owner,
-      repo,
-      issue_number: pr_number,
-      body: `
-        Pull Request #${5} has been updated wi32h: \n
-        - ${name} \n
-        ${process.env.LICENSE_PRIVATE_KEY? 'CMON':'missing'}
-        
-      `
-    });
+
+
 
   } catch (error) {
     core.setFailed(error.message);
