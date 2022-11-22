@@ -1,5 +1,5 @@
-name: 'PR Metadata Action'
-description: 'Adds pull request file changes as a comment to a newly opened PR'
+name: 'Issue Optomo license'
+description: 'Issue a Optomo license that can be sent to clients'
 inputs:
   name:
     description: 'name'

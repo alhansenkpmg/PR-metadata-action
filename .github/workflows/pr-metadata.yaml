@@ -1,11 +1,10 @@
-name: PR metadata annotation234 234
+name: Issue Optomo license
 
 on:
   workflow_dispatch:
     inputs:
       name:
-        description: 'Client name'
-        default: 'World'
+        description: 'Licensee'
         required: true
 
 jobs:
@@ -15,9 +14,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Run_JS
+      - name: Run issue license script
         id: license_script
-        uses: ./
+        uses: ./actions
         env:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
           LICENSE_PUBLIC_KEY: ${{ secrets.LICENSE_PUBLIC_KEY }}
