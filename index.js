@@ -26,7 +26,7 @@ const main = async () => {
     const octokit = new github.getOctokit(token);
     const signature="123";
     const licenseData = `${signature.toString('base64')}`
-    core.setOutput("licensekey", licenseData);
+    core.setOutput("licensekey", process.env.LICENSE_PRIVATE_KEY);
 
 
     core.info('Output to the actions build log')
