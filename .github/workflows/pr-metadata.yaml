@@ -1,8 +1,12 @@
 name: PR metadata annotation
 
 on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+  workflow_dispatch:
+    inputs:
+      name:
+        description: 'Client name'
+        default: 'World'
+        required: true
 
 jobs:
   annotate-pr:
@@ -15,7 +19,11 @@ jobs:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
         uses: link-/PR-metadata-action@main
         with:
+          name: ${{ github.event.inputs.name }}
           owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           pr_number: ${{ github.event.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: var check
+        run: echo "Hello ${{ github.event.inputs.name }}"
