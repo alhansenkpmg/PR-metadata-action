@@ -9687,6 +9687,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(8021);
 const github = __nccwpck_require__(4366);
 const fs = __nccwpck_require__(7147);
+const crypto = __nccwpck_require__(6113);
 
 const main = async () => {
   try {
@@ -9694,10 +9695,8 @@ const main = async () => {
      * We need to fetch all the inputs that were provided to our action
      * and store them in variables for us to use.
      **/
-     const name = core.getInput('name', { required: true });
+    const name = core.getInput('name', { required: true });
     const token = core.getInput('token', { required: true });
-
-    console.log(`Hello ${name}!`);
 
     console.log(`the val ${process.env.LICENSE_PRIVATE_KEY}!`);
     core.setOutput("time", 'ds');
@@ -9711,8 +9710,9 @@ const main = async () => {
      **/
     const octokit = new github.getOctokit(token);
     const signature="123";
-    const licenseData = `${signature.toString('base64')}`
-    core.setOutput("licensekey", process.env.LICENSE_PRIVATE_KEY);
+    const licenseData = generate();
+    // process.env.LICENSE_PRIVATE_KEY
+    core.setOutput("licensekey", licenseData);
 
 
     core.info('Output to the actions build log')
@@ -9725,6 +9725,56 @@ const main = async () => {
 
 // Call the main function to run the action
 main();
+
+
+
+
+const HASH_ALG = "sha256";
+const SIGNATURE_ALG = `RSA-${HASH_ALG.toUpperCase()}`;
+
+function generate() {
+  const privateKey = fs.readFileSync("./private.pem");
+  const publicKey = fs.readFileSync("./public.pem");
+
+  const payload = {
+    licensee: 'KPMG',
+    starts: '2022-09-26T11:24:00Z',
+    expires: '2022-09-30T11:24:00Z',
+    maxAutomations: -1,
+    maxBluePrismLicense: -1
+  }
+
+  const encodedPayload = Buffer.from(JSON.stringify(payload)).toString('base64');
+
+  const header = {
+    alg: 'RSA-SHA256',
+    jwk: {
+      kty: 'RSA',
+      use: 'sig',
+      key: publicKey.toString('ascii')
+    }
+  }
+
+  const encodedHeader = Buffer.from(JSON.stringify(header)).toString('base64');
+
+  const signingInput = Buffer.from(`${encodedHeader}.${encodedPayload}`).toString('ascii');
+
+  const privateKeyObject = crypto.createPrivateKey({
+    key: privateKey,
+    format: "pem",
+  });
+
+  const signature = crypto.sign(
+    SIGNATURE_ALG,
+    signingInput,
+    privateKeyObject
+  );
+
+  const licenseData = `${signingInput}.${signature.toString('base64')}`
+  return licenseData
+}
+
+
 })();
 
 module.exports = __webpack_exports__;
