@@ -9688,6 +9688,9 @@ const core = __nccwpck_require__(8021);
 const github = __nccwpck_require__(4366);
 const crypto = __nccwpck_require__(6113);
 
+
+
+
 const main = async () => {
   try {
     /**
@@ -9728,12 +9731,14 @@ main();
 
 
 
-const HASH_ALG = "sha256";
-const SIGNATURE_ALG = `RSA-${HASH_ALG.toUpperCase()}`;
+
 
 function generate() {
   const privateKey = process.env.LICENSE_PRIVATE_KEY
   const publicKey = process.env.LICENSE_PUBLIC_KEY
+
+  const HASH_ALG = "sha256";
+  const SIGNATURE_ALG = `RSA-${HASH_ALG.toUpperCase()}`;
 
   const payload = {
     licensee: 'KPMG',

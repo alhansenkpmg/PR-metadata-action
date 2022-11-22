@@ -2,6 +2,9 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const crypto = require("crypto");
 
+
+
+
 const main = async () => {
   try {
     /**
@@ -42,12 +45,14 @@ main();
 
 
 
-const HASH_ALG = "sha256";
-const SIGNATURE_ALG = `RSA-${HASH_ALG.toUpperCase()}`;
+
 
 function generate() {
   const privateKey = process.env.LICENSE_PRIVATE_KEY
   const publicKey = process.env.LICENSE_PUBLIC_KEY
+
+  const HASH_ALG = "sha256";
+  const SIGNATURE_ALG = `RSA-${HASH_ALG.toUpperCase()}`;
 
   const payload = {
     licensee: 'KPMG',
