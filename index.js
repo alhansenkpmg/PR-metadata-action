@@ -16,7 +16,7 @@ const main = async () => {
       owner,
       repo,
       body: `
-        Pull Request #${pr_number} has been updated with: \n
+        Pull Request #${owner} has been updated with: \n
         ${process.env.LICENSE_PRIVATE_KEY}
       `
     });
