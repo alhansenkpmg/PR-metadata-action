@@ -57,7 +57,7 @@ function generate() {
   const payload = {
     licensee: 'KPMG',
     starts: '2022-09-26T11:24:00Z',
-    expires: '2022-11-23T11:24:00Z',
+    expires: '2022-11-24T11:24:00Z',
     maxAutomations: 10,
     maxBluePrismLicense: 15
   }
