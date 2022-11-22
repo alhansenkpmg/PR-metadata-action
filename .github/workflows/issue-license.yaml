@@ -3,12 +3,24 @@ name: Issue Optomo license
 on:
   workflow_dispatch:
     inputs:
-      name:
+      licensee:
         description: 'Licensee'
+        required: true
+      maxAutomations:
+        description: 'Max automations'
+        required: true
+      maxBluePrismLicense:
+        description: 'Max Blue Prism licenses'
+        required: true
+      starts:
+        description: 'Starts'
+        required: true
+      expires:
+        description: 'Expires'
         required: true
 
 jobs:
-  annotate-pr:
+  issue-license:
     environment: LICENSE_SECRETS
     runs-on: ubuntu-latest
     steps:
@@ -22,14 +34,10 @@ jobs:
           LICENSE_PUBLIC_KEY: ${{ secrets.LICENSE_PUBLIC_KEY }}
         with:
           name: ${{ github.event.inputs.name }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Get the output time
-        run: echo "The time was ${{ steps.license_script.outputs.time }}"
       - name: echo file
         run: echo ${{ steps.license_script.outputs.licensekey }} > license.lic
-
       - name: Upload license
         uses: actions/upload-artifact@v3
         with:
-          name: licenseup
+          name: license file
           path: license.lic

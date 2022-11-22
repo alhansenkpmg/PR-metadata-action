@@ -1,20 +1,23 @@
 name: 'Issue Optomo license'
 description: 'Issue a Optomo license that can be sent to clients'
 inputs:
-  name:
-    description: 'name'
+  licensee:
+    description: 'Licensee'
     required: true
-  token:
-    description: 'The token to use to access the GitHub API'
+  maxAutomations:
+    description: 'Max automations'
     required: true
-  working-dir:
-    required: false
-    default: '.'
-    description: The directory where dist folder resides
+  maxBluePrismLicense:
+    description: 'Max Blue Prism licenses'
+    required: true
+  starts:
+    description: 'Starts'
+    required: true
+  expires:
+    description: 'Expires'
+    required: true
 outputs:
-  time: # id of output
-    description: 'time'
-  licensekey: # id of output
+  licensekey:
     description: 'licensekey'
 
 runs:
