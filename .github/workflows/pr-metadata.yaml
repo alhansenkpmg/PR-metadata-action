@@ -15,7 +15,7 @@ jobs:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
         uses: link-/PR-metadata-action@main
         with:
-          owner: ${{ secrets.LICENSE_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
           repo: ${{ github.event.repository.name }}
           pr_number: ${{ github.event.number }}
           token: ${{ secrets.GITHUB_TOKEN }}
