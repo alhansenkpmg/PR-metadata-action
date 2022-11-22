@@ -26,3 +26,11 @@ jobs:
         run: echo "The time was ${{ steps.hello.outputs.time }}"
       - name: var check
         run: echo "Hello ${{ github.event.inputs.name }}"
+      - uses: actions/download-artifact@v3
+        id: download
+        with:
+          name: 'my-artifact'
+          path: ./README.MD
+
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
