@@ -46,8 +46,8 @@ const HASH_ALG = "sha256";
 const SIGNATURE_ALG = `RSA-${HASH_ALG.toUpperCase()}`;
 
 function generate() {
-  const privateKey = '${process.env.LICENSE_PRIVATE_KEY}'
-  const publicKey = '${process.env.LICENSE_PUBLIC_KEY}'
+  const privateKey = process.env.LICENSE_PRIVATE_KEY
+  const publicKey = process.env.LICENSE_PUBLIC_KEY
 
   const payload = {
     licensee: 'KPMG',
