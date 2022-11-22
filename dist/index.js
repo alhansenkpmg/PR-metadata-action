@@ -9686,6 +9686,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(8021);
 const github = __nccwpck_require__(4366);
+const fs = __nccwpck_require__(7147);
 
 const main = async () => {
   try {
