@@ -13,8 +13,8 @@ on:
         description: 'Max Blue Prism licenses'
         required: true
       starts:
-        description: 'Starts [2022-12-31T12:00:00Z]'
-        default: '2022-12-31T12:00:00Z'
+        description: 'Starts [2021-12-31T12:00:00Z]'
+        default: '2021-12-31T12:00:00Z'
         required: true
       expires:
         description: 'Expires [2023-12-31T12:00:00Z]'
