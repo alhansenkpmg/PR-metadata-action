@@ -11,11 +11,11 @@ inputs:
     description: 'Max Blue Prism licenses'
     required: true
   starts:
-    description: 'Starts format: [2022-12-31T12:00:00Z]'
+    description: 'Starts [2022-12-31T12:00:00Z]'
     default: '2022-12-31T12:00:00Z'
     required: true
   expires:
-    description: 'Expires format: [2023-12-31T12:00:00Z]'
+    description: 'Expires [2023-12-31T12:00:00Z]'
     default: '2023-12-31T12:00:00Z'
     required: true
 outputs:
