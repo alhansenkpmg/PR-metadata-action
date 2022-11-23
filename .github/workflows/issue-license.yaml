@@ -35,7 +35,11 @@ jobs:
           LICENSE_PRIVATE_KEY: ${{ secrets.LICENSE_PRIVATE_KEY }}
           LICENSE_PUBLIC_KEY: ${{ secrets.LICENSE_PUBLIC_KEY }}
         with:
-          name: ${{ github.event.inputs.name }}
+          licensee: ${{ github.event.inputs.licensee }}
+          maxAutomations: ${{ github.event.inputs.maxAutomations }}
+          maxBluePrismLicense: ${{ github.event.inputs.maxBluePrismLicense }}
+          starts: ${{ github.event.inputs.starts }}
+          expires: ${{ github.event.inputs.expires }}
       - name: echo file
         run: echo ${{ steps.license_script.outputs.licensekey }} > license.lic
       - name: Upload license
