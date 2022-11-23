@@ -5,6 +5,8 @@ const main = async () => {
   try {
     const licenseData = generate();
     core.setOutput("licensekey", licenseData);
+    console.log("Checkthis")
+    console.log(core.getInput('expires', { required: true }))
   } catch (error) {
     core.setFailed(error.message);
   }
